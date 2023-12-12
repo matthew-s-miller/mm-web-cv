@@ -1,0 +1,70 @@
+---
+
+export type Props = {
+  pageCount: number
+  title: string
+}
+
+const {pageCount, title} = Astro.props;
+
+
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="The Curriculum Vitae of Matthew Miller">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body>
+    <slot></slot>
+	</body>
+</html>
+
+<style lang="scss" is:global>
+  @import "../util/breakpoints.scss";
+
+  :root {
+    font-size: 10pt;
+    line-height: 1.25;
+    --accent-color: #517896;
+    --secondary-color: #E4E7EC;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  a, a:visited {
+    text-decoration: none;
+    color: unset;
+  }
+
+  body {
+    @media (prefers-color-scheme: dark) {
+      background-color: black;
+    }
+
+    @media screen and (min-width: $a4-page-width) {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      column-gap: 2rem;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+      }
+    }
+
+    @media not print {
+      body {
+        margin: 0;
+      }
+    }
+  }
+
+</style>

@@ -1,0 +1,37 @@
+---
+
+---
+<div class="page">
+  <div class="print-area">
+    <slot></slot>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import "../util/breakpoints.scss";
+
+  @page {
+    size: a4 portrait;
+  }
+  
+  .page {
+    background-color: white;
+    page-break-after: always;
+    break-after: page;
+
+    @media screen and (min-width: $a4-page-width) {
+      width: $a4-page-width;
+      height: $a4-page-height;
+      border: 1px solid black;
+    }
+
+    .print-area {
+      font-family: system-ui, sans-serif;
+
+      @media screen and (min-width: $a4-page-width) {
+        margin: 0.5in;
+      }
+    }
+  }
+
+</style>

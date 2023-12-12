@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import { sortProjectEntries } from "../util/misc";
+import "./timeline-grid.scss";
+
+// career
+const projectsColl = (await getCollection("projects"))
+  .sort(sortProjectEntries)
+  .filter(entry => !entry.data.hide);
+
+const projectsContent = await Promise.all(projectsColl.map(entry => entry.render()));
+const projects = projectsColl.map((entry, i) => ({ project: entry, ...projectsContent[i]}));
+
+---
+<div class="projects-grid">
+  <!-- Career -->
+  {projects.map(({project, Content}, i) => <div class="project">
+    <h3>{project.data.title}</h3>
+    <div>{project.data.period}</span>
+    <div class="role accent">{project.data.company}</div>
+    <Content/>
+  </div>)}
+</div>
+
+<style lang="scss">
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 0.4in;
+  }
+
+  .accent {
+    color: var(--accent-color);
+  }
+
+</style>

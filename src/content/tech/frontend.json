@@ -1,0 +1,12 @@
+{
+  "category": "Front End Development",
+  "seq": 1,
+  "tech": [
+    {"name": "HTML CSS", "score": 10, "badge": true},
+    {"name": "Javascript", "score": 10, "badge": true},
+    {"name": "Angular", "score": 9, "badge": true},
+    {"name": "Vue", "score": 8},
+    {"name": "Svelte", "score": 7},
+    {"name": "Astro", "score": 10}
+  ]
+}

@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Connector from "./Connector.astro";
+import { formatYear } from "../util/misc";
+import "./timeline-grid.scss";
+
+import awardIcon from "../assets/svg/award.svg?raw";
+
+// education
+const educationColl = await getCollection("education");
+const educationEntries = educationColl
+	.filter(entry => !entry.data.hide)
+	.reverse()
+const educationContent = await Promise.all(educationEntries.map(entry => entry.render()));
+const education = educationEntries.map((entry, i) => ({ study: entry.data, ...educationContent[i] }));
+
+---
+<div class="timeline-grid" >
+  <!-- Career -->
+  {education.map(({study, Content}, i) => <div class="job">     
+    <div class="job-connector">
+      <Connector path="S-N" dot={true} line={false}/>
+    </div>
+    <div>
+      <h3>{study.title}</h3>
+      <div>{formatYear(study)} <span class="role accent">{study.institution}</span></div>
+      <p><Fragment set:html={awardIcon}></Fragment> {study.level}</p>
+    </div>
+  </div>)}
+</div>
+
+<style lang="scss">
+
+  :global(svg.icon.award) {
+    width: 14px;
+    height: 14px;
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+  }
+
+</style>

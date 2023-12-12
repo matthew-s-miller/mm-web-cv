@@ -1,0 +1,12 @@
+{
+  "category": "Database Technology",
+  "seq": 5,
+  "tech": [
+    {"name": "Oracle DB", "score": 8},
+    {"name": "Postgresql", "score": 8},
+    {"name": "NoSQL", "score": 8, "badge": true},
+    {"name": "Neo4J", "score": 9},
+    {"name": "MongoDB", "score": 8, "badge": true},
+    {"name": "DynamoDB", "score": 7}
+  ]
+}

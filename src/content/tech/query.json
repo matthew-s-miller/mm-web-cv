@@ -1,0 +1,12 @@
+{
+"category": "Data Processing",
+  "seq": 4,
+  "tech": [
+    {"name": "SQL", "score": 10, "badge": true},
+    {"name": "JDBC", "score": 8},
+    {"name": "JPA", "score": 8},
+    {"name": "Prisma", "score": 7},
+    {"name": "Drizzle", "score": 6},
+    {"name": "Cypher", "score": 10}
+  ]
+}

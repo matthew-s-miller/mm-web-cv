@@ -1,0 +1,12 @@
+{
+  "category": "Server Technology",
+  "seq": 3,
+  "tech": [
+    {"name": "Java", "score": 9, "badge": true},
+    {"name": "Node.js", "score": 8, "badge": true},
+    {"name": "Nest.js", "score": 8, "badge": true},
+    {"name": "Spring Boot", "score": 7},
+    {"name": "Python", "score": 5},
+    {"name": "Rust", "score": 4}
+  ]
+}

@@ -1,0 +1,28 @@
+.timeline-grid {
+  --track-size: 22px;
+  display: grid;
+  grid-template-columns: var(--track-size) 1fr;
+
+  .job {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: subgrid;
+
+    .job-connector {
+      display: grid;
+      grid-template-rows: var(--track-size) 1fr;
+    }
+
+    .role {
+      &.accent {
+        color: var(--accent-color);
+      }
+    }
+
+    // margin collapse isn't activating as we're inside a grid
+    // therefore only apply a margin-block-end when there's no <p>
+    &:not(:has(p)):not(:last-child) > :last-child {
+      margin-block-end: 1rem;
+    }
+  }
+}

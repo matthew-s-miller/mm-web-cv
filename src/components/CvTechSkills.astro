@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import { sortTechEntries } from "../util/misc";
+import "./timeline-grid.scss";
+
+import starIcon from "../assets/svg/star.svg?raw";
+
+const {  } = Astro.props;
+
+// career
+const techColl = (await getCollection("tech"))
+  .sort(sortTechEntries)
+  .filter(entry => !entry.data.hide);
+
+---
+<dl>
+  {techColl.map((entry) => <>
+    <dt>{entry.data.category}</dt>
+    <dd>
+      <ul>
+      {entry.data.tech.map((tech, i) => <li>
+        {tech.name} <!-- {(i+1) < entry.data.tech.length ? ", " : ""} -->
+        {tech.badge && <Fragment set:html={starIcon}></Fragment>}
+      </li>
+      )}
+      </ul>
+    </dd>
+  </>)}
+</dl>
+
+  <!-- <p>All technologies listed aside from Rust I've used professionally</p> -->
+
+<div class="footnote"><Fragment set:html={starIcon}></Fragment> LinkedIn Assessments (2022, 2023)</div>
+
+<style lang="scss">
+
+  dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0.4in;
+    margin-block: unset;
+
+    dt {
+      color: var(--accent-color);
+      grid-row: 1;
+      text-wrap: balance;
+    }
+    dd {
+      margin-inline: unset;
+    }
+
+    ul {
+      list-style-type: none;
+      margin-block-end: unset;
+      padding-inline-start: unset;
+      line-height: 1.5;
+    }
+  }
+
+  :global(svg.icon.star) {
+    width: 14px;
+    height: 14px;
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+    stroke-width: 0.5px;  
+  }
+
+  .footnote {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    font-size: 0.875rem;
+  }
+  
+</style>

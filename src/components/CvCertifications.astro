@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Connector from "./Connector.astro";
+import { formatYear } from "../util/misc";
+import "./timeline-grid.scss";
+
+// quals
+const qualsColl = await getCollection("quals");
+const quals = qualsColl
+	.filter(entry => !entry.data.hide)
+	.reverse()
+
+---
+<div class="timeline-grid" >
+  <!-- Career -->
+  {quals.map(({data}, i) => <div class="job">     
+    <div class="job-connector">
+      <Connector path="S-N" dot={true} line={false}/>
+    </div>
+    <div>
+      <h3>{data.title}</h3>
+      <div>{formatYear(data)} <span class="role accent">{data.institution}</span></div>
+    </div>
+  </div>)}
+</div>

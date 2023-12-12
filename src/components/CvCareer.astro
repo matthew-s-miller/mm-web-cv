@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Connector from "./Connector.astro";
+import { sortCareerEntries, isRecentCareerEntry, formatYear } from "../util/misc";
+import "./timeline-grid.scss";
+
+export type Props = {
+  details?: number
+}
+
+const { details = 1900 } = Astro.props;
+
+const isSince = isRecentCareerEntry(details);
+
+// career
+const careerColl = (await getCollection("career"))
+  .sort(sortCareerEntries)
+  .filter(entry => !entry.data.hide)
+  // .filter(entry => isSince(entry) || (highlights && entry.data.highlight))
+  .reverse();
+
+const careerContent = await Promise.all(careerColl.map(entry => entry.render()));
+const career = careerColl.map((entry, i) => ({ job: entry, recent: isSince(entry), ...careerContent[i]}));
+
+---
+<div class="timeline-grid">
+  <!-- Career -->
+  {career.map(({job, recent, Content}, i) => <div class="job">
+    <div class="job-connector">
+      <Connector path={i == 0 ? "-S"  : "S-N"} dot={true}/>
+      <Connector path="S-N"/>
+    </div>
+    <div class:list={["job-details", {recent}]}>
+      <h3>{job.data.company}</h3>
+      <span class="job-date">{formatYear(job.data)} {job.data.locality && <>{job.data.locality}</>}</span>
+      <div class="role accent">{job.data.role}</div>
+      <!-- {i === 0 && <Content/>} -->
+    </div>
+  </div>)}
+</div>
