@@ -8,8 +8,6 @@ import CvEducation from "../components/CvEducation.astro";
 import CvProjectWork from "../components/CvProjectWork.astro";
 import CvTechSkills from "../components/CvTechSkills.astro";
 
-import wwwIcon from "../assets/svg/www.svg?raw";
-import linkedinIcon from "../assets/svg/linkedin.svg?raw";
 import pic from "../assets/matt-miller-cutout.png";
 
 ---
@@ -71,15 +69,9 @@ import pic from "../assets/matt-miller-cutout.png";
       </article>
     </main>
     <footer>
-      Find me on online:
-      <div>
-        <Fragment set:html={linkedinIcon}></Fragment>
-        <a href="https://linkedin.com/in/matthewmillerprofile">https://linkedin.com/in/matthewmillerprofile</a>
-      </div>
-      <div>
-        <Fragment set:html={wwwIcon}></Fragment>
-        <a href="https://matthewmiller.au">https://matthewmiller.au</a>
-      </div>
+			<div>
+				Built with Astro 4. View online <a href="https://matthewmiller.au/cv/">matthewmiller.au/cv/</a>
+				Source code: <a href="https://github.com/matthew-s-miller/mm-web-cv">github.com/matthew-s-miller/mm-web-cv</a></div>
     </footer>
   </PageLayout>
 </CvLayout>

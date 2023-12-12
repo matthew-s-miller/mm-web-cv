@@ -25,7 +25,7 @@ const career = careerColl.map((entry, i) => ({ job: entry, recent: isSince(entry
 ---
 <div class="timeline-grid">
   <!-- Career -->
-  {career.map(({job, recent, Content}, i) => <div class="job">
+  {career.map(({job, recent}, i) => <div class="job">
     <div class="job-connector">
       <Connector path={i == 0 ? "-S"  : "S-N"} dot={true}/>
       <Connector path="S-N"/>

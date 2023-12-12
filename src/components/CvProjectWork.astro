@@ -14,7 +14,7 @@ const projects = projectsColl.map((entry, i) => ({ project: entry, ...projectsCo
 ---
 <div class="projects-grid">
   <!-- Career -->
-  {projects.map(({project, Content}, i) => <div class="project">
+  {projects.map(({project, Content}) => <div class="project">
     <h3>{project.data.title}</h3>
     <div>{project.data.period}</span>
     <div class="role accent">{project.data.company}</div>

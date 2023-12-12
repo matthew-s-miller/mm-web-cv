@@ -18,7 +18,7 @@ const techColl = (await getCollection("tech"))
     <dt>{entry.data.category}</dt>
     <dd>
       <ul>
-      {entry.data.tech.map((tech, i) => <li>
+      {entry.data.tech.map((tech) => <li>
         {tech.name} <!-- {(i+1) < entry.data.tech.length ? ", " : ""} -->
         {tech.badge && <Fragment set:html={starIcon}></Fragment>}
       </li>

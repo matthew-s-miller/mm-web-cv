@@ -17,7 +17,7 @@ const education = educationEntries.map((entry, i) => ({ study: entry.data, ...ed
 ---
 <div class="timeline-grid" >
   <!-- Career -->
-  {education.map(({study, Content}, i) => <div class="job">     
+  {education.map(({study}) => <div class="job">     
     <div class="job-connector">
       <Connector path="S-N" dot={true} line={false}/>
     </div>

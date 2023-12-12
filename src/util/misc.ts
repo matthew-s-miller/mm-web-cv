@@ -32,6 +32,10 @@ export function formatYear(data: CollectionEntry<"career"|"education">["data"]) 
 	return data.year + (data.current ? `-${formatTwoDigitYear(new Date().getFullYear())}` : data.yearTo ? `-${formatTwoDigitYear(data.yearTo)}` : "");
 }
 
+export function formatYear2(data: CollectionEntry<"quals">["data"]) {
+	return data.year + (data.yearTo ? `-${formatTwoDigitYear(data.yearTo)}` : "");
+}
+
 export function formatTwoDigitYear(year: number) {
   const result = `${year % 100}`;
   return result.length === 1 ? `0${result}` : result;

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Connector from "./Connector.astro";
-import { formatYear } from "../util/misc";
+import { formatYear2 } from "../util/misc";
 import "./timeline-grid.scss";
 
 // quals
@@ -13,13 +13,13 @@ const quals = qualsColl
 ---
 <div class="timeline-grid" >
   <!-- Career -->
-  {quals.map(({data}, i) => <div class="job">     
+  {quals.map(({data}) => <div class="job">     
     <div class="job-connector">
       <Connector path="S-N" dot={true} line={false}/>
     </div>
     <div>
       <h3>{data.title}</h3>
-      <div>{formatYear(data)} <span class="role accent">{data.institution}</span></div>
+      <div>{formatYear2(data)} <span class="role accent">{data.institution}</span></div>
     </div>
   </div>)}
 </div>
